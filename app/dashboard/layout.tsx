@@ -35,7 +35,7 @@ export default function Layout({
     return (
     <> 
       <div className="flex ">
-        <div className={` flex-col h-screen p-5 pt-8 bg-black text-white relative  rounded-tr-lg duration-300 ${open ? 'w-72' : 'w-20'}`}>
+        <div className={` flex-col h-screen p-5 pt-8 bg-black text-white relative  rounded-tr-lg duration-300 border-r-2 border-gray-600 ${open ? 'w-72' : 'w-20'}`}>
             <div className={`font-bold mb-9 ${!open && 'hidden'}`}>
                 <Link href='/' className={`${pacifico.className} text-blue-600 text-2xl`}>Emergent</Link>
             </div>
@@ -48,9 +48,11 @@ export default function Layout({
                         <span className={`text-base font-medium flex-1 duration-200 ${!open && 'hidden'}`}>Home</span>
                     </Link>
                 </li>
-                <li className={` text-sm flex  gap-x-4 items-center cursor-pointer p-2  rounded-md mt-1 ${pathname ==='/dashboard' ? 'bg-white text-blue-600':" text-gray-300"}`}>
-                    <span className="text-2xl block float-left"><MdDashboard/></span>
-                    <span className={`text-base font-medium flex-1 duration-200 ${!open && 'hidden'}`}>Dashboard</span>
+                <li className={` text-sm flex items-center cursor-pointer  rounded-md mt-1 ${pathname ==='/dashboard' ? 'bg-white text-blue-600':" text-gray-300"}`}>
+                    <Link href='/dashboard' className="flex gap-x-4 items-center  w-full rounded-md  p-2">
+                        <span className="text-2xl block float-left"><MdDashboard/></span>
+                        <span className={`text-base font-medium flex-1 duration-200 ${!open && 'hidden'}`}>Dashboard</span>
+                    </Link>
                 </li>
                 <li className={` text-sm flex  items-center cursor-pointer   rounded-md mt-1 ${pathname ==='/dashboard/workflow' ? 'bg-white text-blue-600':" text-gray-300"}`}>
                     <Link href='/dashboard/workflow' className="flex gap-x-4 items-center  w-full rounded-md  p-2">
@@ -101,7 +103,7 @@ export default function Layout({
                 <li className={`flex gap-2 items-center ${pathname === '/logout' ?'text-white bg-black rounded py-2 px-4 font-semibold':'text-black text-md'}`}><Link href='/logout' className=''>Logout</Link></li>
             </ul> */}
         </div>
-        <div className="w-full overflow-y-scroll">{children}</div>
+        <div className="w-full  bg-black relative">{children}</div>
       </div>
     </>
     );
