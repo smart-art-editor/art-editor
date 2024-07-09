@@ -1,0 +1,1 @@
+export const broadcastChannel = new BroadcastChannel('webcam_channel');

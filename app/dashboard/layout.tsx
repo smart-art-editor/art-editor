@@ -15,6 +15,7 @@ import { IoIosSettings } from "react-icons/io";
 import { MdOutlineLogout } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { IoAddOutline, IoExtensionPuzzle } from "react-icons/io5";
+import { VideosProvider } from "@/context/VideosContext";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -33,6 +34,7 @@ export default function Layout({
     const pathname = usePathname()
     const [open,setOpen] = useState(true)
     return (
+    <VideosProvider>
     <> 
       <div className="flex ">
         <div className={` flex-col h-screen p-5 pt-8 bg-black text-white relative  rounded-tr-lg duration-300 border-r-2 border-gray-600 ${open ? 'w-72' : 'w-20'}`}>
@@ -106,5 +108,6 @@ export default function Layout({
         <div className="w-full  bg-black relative">{children}</div>
       </div>
     </>
+    </VideosProvider>
     );
   }
