@@ -4,6 +4,9 @@ import { IoMdAdd } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import dynamic from 'next/dynamic';
 import axios from "axios";
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import { TimeAgoComponent } from '@/components/TimeAgo';
+import { DurationComponent } from '@/components/Duration';
 const RecordingDialog = dynamic(() => import('@/components/RecordingDialog'), { ssr: false });
 
 type pageProps = {
@@ -40,6 +43,7 @@ const FilesPage:React.FC<pageProps> = () => {
     }, []);
     const apiKey = process.env.NEXT_PUBLIC_VIDEO_API_KEY;
     const apiSecret = process.env.NEXT_PUBLIC_VIDEO_API_SECRET;
+    
     useEffect(()=>{
         console.log('ttttttttttttttttttttttttttttttttttt')
         const getvids = async() => {
@@ -82,17 +86,44 @@ const FilesPage:React.FC<pageProps> = () => {
             </div>
             {modalOpen && <RecordingDialog open={modalOpen} onClose={handleCloseModal} />}
             
-            <div className='mt-10 p-4'>
-                {loading && <p>Loading</p>}
+            <div className='mt-10 p-4 '>
+                {/* {loading && <p>Loading</p>} */}
+                {loading ? (
+                    <p className='text-center w-full text-3xl'>Loading....</p>
+                    ):(<>
                 {videos.length > 0 ? (
-                    <div className='w-full flex flex-wrap gap-3  items-center'>
+                    <div className='w-full flex  flex-wrap gap-3  items-center'>
                         {videos.map((video)=>(
-                            <iframe src="https://player.thetavideoapi.com/video/video_if4xyxdxiykxfmmw9x112g1pwh" 
-                            key={video.id}
-                            
-                           />
+                            <div
+                             key={video.id}
+                             className='rounded-sm'
+                             style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                flexDirection:'column',
+                                padding:'3px',
+                                backgroundColor:'white',
+                                
+                              }}>
+                            <iframe src={`https://player.thetavideoapi.com/video/${video.id}`}
+                            allowFullScreen          
+                            style={{
+                                display:'flex',
+                                alignItems:'center',
+                                justifyContent:'center',
+                                width: '100%',               
+                            }}/>
+                            <div className='flex flex-col w-full mt-3 px-1'>
+                                <div className='flex items-center justify-between w-full text-gray-500 text-sm'>
+                                    <TimeAgoComponent dateString={video.create_time} />
+                                    <DurationComponent duration={Number(video.duration)} />
+                                    
+                                </div>
+                            </div>
+                           </div>
                         ))}
-                    </div>):(<p>You have not taken any records yet</p>)}
+                    </div>):(<p  className='text-center w-full '>You have not taken any recordings yet</p>)}</>)}
                 
             </div>
         </div>
