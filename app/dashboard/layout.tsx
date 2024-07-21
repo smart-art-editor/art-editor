@@ -16,6 +16,8 @@ import { MdOutlineLogout } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { IoAddOutline, IoExtensionPuzzle } from "react-icons/io5";
 import { VideosProvider } from "@/context/VideosContext";
+import { Web3Provider } from "@/context/SignUp";
+//import { Web3Provider } from "@/context/SignUp";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -34,6 +36,7 @@ export default function Layout({
     const pathname = usePathname()
     const [open,setOpen] = useState(true)
     return (
+    
     <VideosProvider>
     <> 
       <div className="flex ">
@@ -56,43 +59,45 @@ export default function Layout({
                         <span className={`text-base font-medium flex-1 duration-200 ${!open && 'hidden'}`}>Dashboard</span>
                     </Link>
                 </li>
-                <li className={` text-sm flex  items-center cursor-pointer   rounded-md mt-1 ${pathname ==='/dashboard/workflow' ? 'bg-white text-blue-600':" text-gray-300"}`}>
+                {/* <li className={` text-sm flex  items-center cursor-pointer   rounded-md mt-1 ${pathname ==='/dashboard/workflow' ? 'bg-white text-blue-600':" text-gray-300"}`}>
                     <Link href='/dashboard/workflow' className="flex gap-x-4 items-center  w-full rounded-md  p-2">
                         <span className="text-2xl block float-left"><LuWorkflow/></span>
                         <span className={`text-base font-medium flex-1 duration-200 ${!open && 'hidden'}`}>Workflow</span>
                     </Link>
-                </li>
+                </li> */}
                 <li className={` text-sm flex items-center cursor-pointer  rounded-md mt-1 ${pathname ==='/dashboard/files' ? 'bg-white text-blue-600':" text-gray-300"}`}>
                     <Link href='/dashboard/files' className="flex gap-x-4 items-center  w-full rounded-md  p-2">
                         <span className="text-2xl block float-left"><BsFiles/></span>
                         <span className={`text-base font-medium flex-1 duration-200 ${!open && 'hidden'}`}>Files</span>
                     </Link>
                 </li>
-                <li className={` text-sm flex  gap-x-4 items-center cursor-pointer p-2  rounded-md mt-1 ${pathname ==='/dashboard/notifications' ? 'bg-white text-blue-600':" text-gray-300"}`}>
+                {/* <li className={` text-sm flex  gap-x-4 items-center cursor-pointer p-2  rounded-md mt-1 ${pathname ==='/dashboard/notifications' ? 'bg-white text-blue-600':" text-gray-300"}`}>
                     <span className="text-2xl block float-left"><IoIosNotifications/></span>
                     <span className={`text-base font-medium flex-1 duration-200 ${!open && 'hidden'}`}>Notifications</span>
-                </li>
-                <li className={` text-sm flex  gap-x-4 items-center cursor-pointer p-2  rounded-md mt-1 ${pathname ==='/dashboard/settings' ? 'bg-white text-blue-600':" text-gray-300"}`}>
+                </li> */}
+                {/* <li className={` text-sm flex  gap-x-4 items-center cursor-pointer p-2  rounded-md mt-1 ${pathname ==='/dashboard/settings' ? 'bg-white text-blue-600':" text-gray-300"}`}>
                     <span className="text-2xl block float-left"><IoIosSettings/></span>
                     <span className={`text-base font-medium flex-1 duration-200 ${!open && 'hidden'}`}>Settings</span>
-                </li>
+                </li> */}
                 
             </ul>
             <div className="absolute bottom-9">
                 <h2 className={`text-sm text-gray-500 ${!open && 'hidden'}`}>OPTIONS</h2>
                 <ul className=" flex flex-col">
-                    <li className={` text-sm flex  gap-x-4 items-center cursor-pointer p-2  rounded-md mt-1 ${pathname ==='/dashboard/profile' ? 'bg-white text-blue-600':" text-gray-300"}`}>
+                    <li className={` text-sm flex items-center cursor-pointer  rounded-md mt-1 ${pathname ==='/dashboard/profile' ? 'bg-white text-blue-600':" text-gray-300"}`}>
+                      <Link href='/dashboard/profile' className="flex gap-x-4 items-center  w-full rounded-md  p-2">
                         <span className="text-2xl block float-left"><CgProfile/></span>
                         <span className={`text-base font-medium flex-1 duration-200 ${!open && 'hidden'}`}>Profile</span>
+                      </Link>
                     </li>
                     <li className={` text-sm flex  gap-x-4 items-center cursor-pointer p-2  rounded-md mt-1 ${pathname ==='/logout' ? 'bg-white text-blue-600':" text-gray-300"}`}>
                         <span className="text-2xl block float-left"><MdOutlineLogout/></span>
                         <span className={`text-base font-medium flex-1 duration-200 ${!open && 'hidden'}`}>Sign Out</span>
                     </li>
-                    <li className={` text-sm flex  gap-x-4 items-center cursor-pointer p-2  rounded-md mt-1 ${pathname ==='/install' ? 'bg-white text-blue-600':" text-gray-300"}`}>
+                    {/* <li className={` text-sm flex  gap-x-4 items-center cursor-pointer p-2  rounded-md mt-1 ${pathname ==='/install' ? 'bg-white text-blue-600':" text-gray-300"}`}>
                         <span className="text-2xl block float-left"><IoExtensionPuzzle/></span>
                         <span className={`text-base font-medium flex-1 duration-200 ${!open && 'hidden'}`}>Extension</span>
-                </li>
+                </li> */}
                 </ul>
             </div>
             {/* <ul className='mt-5 flex flex-col gap-8 pt-2'>
@@ -105,9 +110,10 @@ export default function Layout({
                 <li className={`flex gap-2 items-center ${pathname === '/logout' ?'text-white bg-black rounded py-2 px-4 font-semibold':'text-black text-md'}`}><Link href='/logout' className=''>Logout</Link></li>
             </ul> */}
         </div>
-        <div className="w-full  bg-black relative">{children}</div>
+        <div className="w-full  bg-black relative overflow-y-scroll h-screen">{children}</div>
       </div>
     </>
     </VideosProvider>
+   
     );
   }

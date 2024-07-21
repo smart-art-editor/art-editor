@@ -1,6 +1,6 @@
 import NavBar from "@/components/NavBar";
 import Image from "next/image";
-import HeroImage from '../public/hero.png'
+import Emergent from '../public/Emergent.png'
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
         <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-blue-600 rounded-lg blur opacity-75"></div>
       <button className="relative px-7 py-4 bg-gray-900 rounded-lg leading-none flex items-center divide-x divide-gray-200">
         <span className="text-gray-100 pr-3">Powered by Theta Labs</span>
-        <span className="text-blue-400 pl-3">Install Chrome Extension</span>
+        <span className="text-blue-400 pl-3">Screen Recorder</span>
       </button>
       </div>
       </div>
@@ -23,7 +23,7 @@ export default function Home() {
       </div>
       <div className="flex items-center justify-center w-full h-full mt-[20px] ">
         
-           <Image src={HeroImage} alt="Hero Image" layout="responsive" width={500}
+           <Image src={Emergent} alt="Hero Image" layout="responsive" width={500}
             height={100} className="max-w-4xl object-fill border-4 border-gray-700 rounded-lg"/>
         
       </div>
