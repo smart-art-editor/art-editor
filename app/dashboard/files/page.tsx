@@ -93,7 +93,7 @@ export default function FilesPage () {
             </div>
             <div className='flex flex-wrap items-center justify-between gap-3 mt-10 p-4'>
                 <div className='border border-blue-600 p-2 rounded-lg text-sm'><span>Videos</span></div>
-                <div className='border border-blue-600 p-2 rounded-lg text-sm'><span>Livestreams</span></div>
+                {/* <div className='border border-blue-600 p-2 rounded-lg text-sm'><span>Livestreams</span></div> */}
                 <div className='flex flex-1 items-center border border-blue-600 rounded-lg p-2'>
                     <input type='text' placeholder='Search video or file' className='flex-1 text-sm outline-none bg-transparent'/>
                     <CiSearch className=' h-full text-lg cursor-pointer'/>

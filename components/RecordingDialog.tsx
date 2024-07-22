@@ -278,11 +278,11 @@ const RecordingDialog:React.FC<RecordingDialogProps> = React.memo(({open,onClose
            if(chunks){
             try{
                const blob = new Blob(chunks, { type: 'video/mp4' });
-              //const videourl = URL.createObjectURL(blob)
-              // const a = document.createElement('a')
-              // a.href=videourl
-              // a.download = `test.mp4`
-              // a.click()
+              const videourl = URL.createObjectURL(blob)
+              const a = document.createElement('a')
+              a.href=videourl
+              a.download = `test.mp4`
+              a.click()
               // const audio = new Audio(videourl);
               // audio.play();
               //setIsUploading(true)
