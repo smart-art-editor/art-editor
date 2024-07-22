@@ -48,7 +48,7 @@ type WorkSpaceListProps = {
   
     useEffect(() => {
       if (workspaceIdsResult && !workspaceIdsError) {
-        const ids = workspaceIdsResult[0].map(bn=> bn.toNumber());
+        const ids = workspaceIdsResult[0].map((bn: { toNumber: () => any; })=> bn.toNumber());
         setWorkspaceIds(ids);
       }
     }, [workspaceIdsResult, workspaceIdsError]);
